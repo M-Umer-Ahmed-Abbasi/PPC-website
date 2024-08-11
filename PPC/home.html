@@ -17,6 +17,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         .header-main {
@@ -278,7 +279,6 @@
         display: flex;
         padding: 10px 15px;
         font-size: 14px;
-        white-space: nowrap; /* Prevent text from wrapping */
         width: auto; /* Allow the button to expand to fit text */
         justify-content: center; /* Center content inside the button */
         text-align: center;
@@ -635,6 +635,7 @@ p {
     position: relative;
     overflow: hidden;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    width:auto;
 }
 
 .cta-button .arrow {
@@ -679,6 +680,7 @@ p {
 
 .floating-images img {
     width: 100%;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
