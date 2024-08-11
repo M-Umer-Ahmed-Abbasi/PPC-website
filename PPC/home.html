@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Amazon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Jost", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            flex-wrap: wrap;
+            background-color: rgba(15,65,152,255);
+            color: white;
+            margin: 0px;
+            margin-top: 1px;
+
+            position:fixed;
+            left:0px;
+            right:0px;
+            z-index: 2;
+
+             border-bottom: solid;
+            border-color: #ff7f00;
+        }
+
+        .logo img {
+            height: 75px;
+            width: 110px;
+        }
+
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-wrap: wrap;
+            row-gap: 10px;
+            padding: 10px 0;
+            background-color: rgba(15,65,152,255);        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu ul li {
+            margin: 5px 5px;
+        }
+
+        .nav-menu ul li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+            display: inline-block;
+            padding: 10px 10px;
+            overflow: hidden;
+            perspective: 1000px;
+            border: 1px solid transparent;
+            background-color: rgba(15,65,152,255);
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu ul li a span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            transform-origin: center bottom;
+        }
+
+        .nav-menu ul li a::before, .nav-menu ul li a::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-menu ul li a::before {
+            top: 0;
+            background: #0f4198;
+            transform: rotateX(0);
+            transform-origin: center bottom;
+        }
+
+        .nav-menu ul li a::after {
+            top: 100%;
+            transform: rotateX(-70deg);
+            transform-origin: center top;
+        }
+
+        .nav-menu ul li a:hover::before {
+            transform: rotateX(70deg);
+            transform-origin: center top;
+        }
+
+        .nav-menu ul li a:hover::after {
+            top: 0;
+            transform: rotateX(0);
+            transform-origin: center bottom;
+        }
+
+        .nav-menu ul li a.active {
+            background-color: #ff7f00;
+            border-radius: 5px;
+        }
+
+        .schedule-call {
+            text-decoration: none;
+            color: white;
+            background-color: #ff7f00;
+            padding: 0px 10px;
+            border-radius: 5px;
+            border:solid;
+            border-color: darkblue;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            border: 1px solid transparent;
+            font-weight: normal;
+        }
+        
+        .schedule-call a {
+            text-decoration: none;
+            color: white;
+            background-color: #ff7f00;
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            border: 1px solid transparent;
+            font-weight: normal; /* Ensure text does not get bold */
+        }
+        
+        .schedule-call a span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            transform-origin: center bottom;
+            font-weight: normal; /* Ensure text does not get bold */
+        }
+        
+        .schedule-call a::before, .schedule-call a::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .schedule-call a::before {
+            top: 0;
+            background: #ff7f00;
+            transform: rotateX(0);
+            transform-origin: center bottom;
+        }
+        
+        .schedule-call a::after {
+            top: 100%;
+            background: #ff7f00;
+            transform: rotateX(-70deg);
+            transform-origin: center top;
+        }
+        
+        .schedule-call a:hover::before {
+            transform: rotateX(70deg);
+            transform-origin: center top;
+        }
+        
+        .schedule-call a:hover::after {
+            top: 0;
+            transform: rotateX(0);
+            transform-origin: center bottom;
+        }
+
+        .schedule-call .fa {
+            margin-right: 0px;
+            transition: transform 0.3s ease;
+        }
+        
+        .schedule-call:hover .fa {
+            transform: rotate(-90deg); /* Rotate 90 degrees to the left */
+        }
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Transform to cross */
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(50deg) translate(5.5px, 5.5px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-50deg) translate(5.5px, -5.5px);
+        }
+
+        /* Responsive Styling */
+        @media screen and (max-width: 1024px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .logo {
+                order: 2;
+                flex: 2;
+                text-align: center;
+            }
+
+            .schedule-call {
+                order: 3;
+                flex: 1;
+                text-align: right;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .schedule-call {
+                display: flex;
+            }
+        }
+
+      @media screen and (max-width: 530px) {
+    .schedule-call {
+        display: flex;
+        padding: 10px 15px;
+        font-size: 14px;
+        white-space: nowrap; /* Prevent text from wrapping */
+        width: auto; /* Allow the button to expand to fit text */
+        justify-content: center; /* Center content inside the button */
+        text-align: center;
+    }
+}
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 50%;
+            background-color: rgb(3, 3, 55);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            border-radius: 12px;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-menu ul li {
+            padding: 12px 16px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-menu ul li a:hover {
+            background-color: #ff7f00;
+            color: white;
+        }
+
+        .show-dropdown {
+            display: block;
+        }
+
+        /* Hero Section */
+#hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.hero-slider .slide {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+  /*transform: translateY(300px);*/
+  transform: scale3d(0.1, 0.1, 0.1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.hero-slider .slide.show {
+  /*transform: translateY(0);*/
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+  transition: transform 1.5s ease;
+}
+
+.hero-slider .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5; /* Light overlay for focus on text */
+}
+
+.hero-slider .slide .hero-overlay {
+    background-color: rgba(0, 0, 0, 0.3); /* Light overlay */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-content {
+    color: #fff;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content h1 .highlight {
+    color: #ff6600; /* Highlight text in orange */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px 5px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  opacity: 0;
+  transform: perspective(600px) rotateX(30deg) scaleY(0.5);
+  transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+}
+
+.btn.show {
+  transform: perspective(600px) rotateX(0deg) scaleY(1);
+  opacity: 1;
+}
+
+.btn-primary {
+    background-color: #0f4198; /* Blue */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 68, 204, 0.5);
+}
+
+.btn-primary:hover {
+    background-color: #0033a0; /* Darker Blue */
+    color: #ff6600; /* Orange */
+    box-shadow: 0 6px 20px rgba(0, 51, 160, 0.7);
+}
+
+.btn-secondary {
+    background-color: #ff7f00; /* Orange */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: #cc5200; /* Darker Orange */
+    color: #0044cc; /* Blue */
+    box-shadow: 0 6px 20px rgba(204, 82, 0, 0.7);
+}
+
+.btn::after {
+    content: '\f061'; /* Font Awesome arrow icon */
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.btn:hover::after {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.slider-controls span {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s;
+}
+
+.slider-controls span:hover {
+    color: #ff6600;
+}
+
+.pagination-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-dots span {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-dots span.active {
+    background-color: #ff6600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+    .slider-controls {
+        padding: 0 10px;
+    }
+}
+
+    </style>
+    <style>
+    .section1 {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0d3b8a;
+    overflow-x: hidden;
+    color: white;
+}
+
+.hero-section {
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /*background: linear-gradient(to right, #001f3f, #003366); /* Blue Gradient Background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.bg-text {
+    font-size: 10rem;
+    font-weight: bold;
+    color: rgba(211, 211, 211, 0.3); /* Orange Highlight */
+    animation: scrollBackground 15s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes scrollBackground {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    z-index: 1;
+}
+
+.text-container {
+    max-width: 50%;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.highlight {
+    color: #ffa500; /* Orange Highlight */
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.cta-button {
+    background-color: #ffa500; /* Orange Button */
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button .arrow {
+    margin-left: 10px;
+    transition: margin-left 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff8c00; /* Darker Orange */
+    transform: translateY(-3px);
+}
+
+.cta-button:hover .arrow {
+    margin-left: 20px;
+}
+
+.image-container {
+    position: relative;
+    width: 50%;
+    perspective: 1000px;
+    z-index: 0;
+    margin-left: 20px;
+}
+
+.floating-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    transform-style: preserve-3d;
+    animation: floatImages 20s infinite linear;
+ opacity: 0;
+  /*transform: translateY(300px);*/
+  transform: translateY(1000px);
+  transition: transform 1.5s ease, opacity 0.5s ease;
+}
+
+.floating-images.show {
+  /*transform: translateY(0);*/
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.floating-images img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes floatImages {
+    0% {
+        transform: rotateX(0) rotateY(0);
+    }
+    50% {
+        transform: rotateX(20deg) rotateY(20deg);
+    }
+    100% {
+        transform: rotateX(0) rotateY(0);
+    }
+}
+</style>
+<style>
+    .portfolio-section {
+  background-color: rgb(3,3,55); /* Blue background */
+  color: white;
+  padding: 20px 20px;
+  text-align: center;
+  justify-content:center ;
+}
+
+.counter-box {
+  display: inline-block;
+  background-color: white;
+  color: black;
+  width: 200px; /* Adjusted width for equal size */
+  height: 200px; /* Adjusted height for equal size */
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  border: solid;
+  border-color: orange;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5); /* Light blue glow */
+  
+  opacity: 0;
+  /*transform: translateY(300px);*/
+  transform: scale3d(0.1, 0.1, 0.1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.counter-box.show {
+  /*transform: translateY(0);*/
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+  transition: transform 1.5s ease;
+}
+
+.counter-box .number {
+  padding-top: 30px;
+  display: block;
+  font-size: 70px;
+  color: rgb(3,3,55);
+  transition: color 0.3s ease;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), /* Inner white glow */
+        0 0 20px rgba(0, 123, 255, 0.2); /* Outer blue glow */
+  outline: 2px solid rgba(255, 255, 255, 0.1); /* Grey outline */
+}
+
+.counter-box:hover {
+  transform: scale(1.25); /* Zoom on hover */
+  transition: transform 0.5s ease;
+}
+
+.counter-box:hover .number {
+  color: goldenrod;
+}
+
+.counter-box .label {
+  margin-top: 10px;
+  font-size: 18px;
+}
+</style>
+<style>
+    .brand-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.section-heading {
+    font-size: 2rem;
+    color: rgba(15, 65, 152, 1);
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: #ffa500; /* Orange Highlight */
+    font-weight: bold;
+}
+
+.logo-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    background: linear-gradient(to right, #ffe4b5, #ffdab9); /* Light orange gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logos {
+    display: flex;
+    gap: 50px;
+    animation: slideLogos 30s linear infinite;
+}
+
+.logos img {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+@keyframes slideLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.logos img:hover {
+    transform: scale(1.1);
+}
+</style>
+<style>
+    .service-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 2.5rem;
+            color: #003366; /* Dark Blue */
+            margin-bottom: 1rem;
+        }
+
+        .heading span {
+            color: #ffa500; /* Orange */
+        }
+
+        .cube-container {
+            perspective: 1000px;
+            position: relative;
+            width: 200px; /* Reduced size */
+            height: 200px; /* Reduced size */
+            margin-bottom: 2rem;
+        }
+
+        .cube {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transition: transform 1s;
+        opacity: 0;
+  /*transform: translateY(300px);*/
+  transform: scale3d(0.1, 0.1, 0.1);
+  transition: transform 1.5s ease, opacity 0.5s ease;
+}
+
+.cube.show {
+  /*transform: translateY(0);*/
+  transform: scale3d(1.0, 1.0, 1.0);
+  opacity: 1;
+}
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #003366; /* Dark Blue */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem; /* Smaller font size */
+            border: 2px solid #ffa500; /* Orange */
+        }
+
+        .front  { transform: rotateY(  0deg) translateZ(100px); }
+        .back   { transform: rotateY(180deg) translateZ(100px); }
+        .left   { transform: rotateY(-90deg) translateZ(100px); }
+        .right  { transform: rotateY( 90deg) translateZ(100px); }
+        .top    { transform: rotateX( 90deg) translateZ(100px); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        @keyframes rotate {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .cube {
+            animation: rotate 10s linear infinite;
+        }
+
+        .service-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 2px solid #003366; /* Dark Blue */
+            border-radius: 8px;
+            width: 160px;
+            height: 200px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        .service-card i {
+            font-size: 2rem;
+            color: #ffa500; /* Orange */
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            color: #003366; /* Dark Blue */
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .highlight {
+            color: #ffa500; /* Orange */
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(20px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .service-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .service-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                width: 90%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+    <style>
+         .section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #003366; /* Dark Blue */
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title span {
+            color: #ffa500; /* Orange */
+        }
+
+           .case-studies {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .case-study {
+            background: #fff;
+            border: 2px solid #003366; /* Dark Blue */
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .case-study:nth-child(even) {
+            background: #f0f8ff; /* Light Blue */
+        }
+
+        .case-study:nth-child(odd) {
+            background: #fff; /* White */
+        }
+
+        .case-study img {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h3 {
+            font-size: 1.8rem;
+            color: #003366; /* Dark Blue */
+            margin: 0.5rem 0;
+        }
+
+        .case-study p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .case-study .highlight {
+            color: #ffa500; /* Orange */
+        }
+
+        .explore-button {
+            background: #003366; /* Dark Blue */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .explore-button:hover {
+            background: #ffa500; /* Orange */
+        }
+
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .testimonial {
+            background: #fff;
+            border: 2px solid #003366; /* Dark Blue */
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            margin: 1rem 0;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .testimonial:nth-child(even) {
+            background: #f0f8ff; /* Light Blue */
+        }
+
+        .testimonial:nth-child(odd) {
+            background: #fff; /* White */
+        }
+
+        .testimonial h4 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+            color: #003366; /* Dark Blue */
+        }
+
+        .testimonial .stars {
+            color: #ffa500; /* Orange */
+            font-size: 1.2rem;
+        }
+
+        .testimonial p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .testimonial-carousel::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for a cleaner look */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .case-study.show, .testimonial.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .case-study, .testimonial {
+                width: 90%;
+            }
+        }
+</style>
+<style>
+    .brochure-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+
+    .heading {
+            font-size: 2.5rem;
+            color: #003366; /* Dark Blue */
+            margin-bottom: 1rem;
+        }
+
+        .heading span {
+            color: #ffa500; /* Orange */
+        }
+
+
+    .brochure-box {
+      width: 400px;
+      margin: 20px;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      border-radius: 10px;
+      padding-bottom: 20px;
+    opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+          .brochure-box.show{
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+    .brochure-box img {
+      width: 95%;
+      height: 100%;
+      object-fit: cover;
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    .brochure-box h3 {
+      margin: 10px 0;
+    }
+
+    .brochure-box p {
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    .brochure-box a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    .brochure-box:hover {
+      /*background: linear-gradient(to bottom right, #66c2ff, #007bff);*/
+      background: #083a4d;
+      color: white;
+      border:solid;
+    border-color: gold;
+      transform: scale(1.05);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .brochure-box:hover a{
+        color: white;
+    }
+
+
+        .schedule-call-button {
+            display: inline-block;
+            background-color: #ffa500; /* Orange */
+            color: #ffffff;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            border: 2px solid #ffa500; /* Orange border */
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            animation: zoomInOut 2s infinite ease-in-out;
+        }
+
+        .schedule-call-button:hover {
+            background-color: #ffffff; /* White */
+            color: #ffa500; /* Orange text */
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+</style>
+<style>
+
+        .faq-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #003366; /* Dark Blue */
+            margin-bottom: 20px;
+        }
+
+        .faq-section h2 span {
+            color: #ffa500; /* Orange */
+        }
+
+        .faq {
+            position: relative;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .faq .question {
+            padding: 15px 20px;
+            background-color: #003366; /* Dark Blue */
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq .answer {
+            max-height: 0;
+            padding: 0 20px;
+            overflow: hidden;
+            background-color: #fff;
+            color: #333;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .faq.active .answer {
+            max-height: 150px; /* Adjust based on content */
+            padding: 15px 20px;
+        }
+
+        .faq.active {
+            transform: scale(1.05);
+        }
+
+        .faq .plus-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .faq.active .plus-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staircase Animation */
+        @keyframes staircase {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+    </style>
+    <style>
+        #content5 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15vh; /* To account for the fixed header */
+    padding-bottom: 20px;
+    background: url('https://zelevate.co/wp-content/uploads/2021/11/customer-service-24-hours-7-days-support-1-scaled.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    background-attachment: scroll;}
+
+#page5 {
+    background: transparent;
+    color: #333;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    position: relative; /* Required for absolutely positioning the form background */
+}
+
+#contact-form {
+    background: transparent; /* Keeps the form background transparent */
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff; /* Ensure text is visible against the form background */
+}
+
+#contact-form label {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid black; /* Black border for input fields */
+    border-radius: 8px;
+    font-size: 1rem;
+    background: transparent; /* Transparent background for input fields */
+    color: #333; /* Dark text for better readability */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #62b5e5;
+    box-shadow: 0 0 5px rgba(98, 181, 229, 0.5);
+    outline: none;
+}
+
+#submit-button {
+    background-color: rgba(15,65,152,255);
+    color: white;
+    border: solid;
+    border-color:#ff7f00;
+    border-radius: 25px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#submit-button:hover {
+    background-color: #0b4a75;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    #page5 {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #submit-button {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #contact-form label {
+        font-size: 1rem;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 0.9rem;
+    }
+
+    #submit-button {
+        padding: 8px 16px;
+    }
+}
+</style>
+<style>
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: white;
+        background: white;
+        border-top: solid;
+        border-color: #ff7f00;
+        font-family: "Jost", sans-serif;
+        font-weight: normal;
+    }
+
+    .footer-about, .footer-support, .footer-contact {
+        flex: 1;
+        background: rgba(15,65,152,255);
+        margin: 1px;
+        margin-top: 0;
+        padding: 15px;
+        padding-top: 30px;
+        height: auto; /* Adjust height for responsiveness */
+        font-size: 14px; /* Smaller text size */
+    }
+
+    .footer-support ul li {
+        margin: 3% 5%;
+    }
+
+    .footer-support ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 14px; /* Smaller text size */
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding: 10px; /* Reduced padding */
+        background: rgba(15,65,152,255);
+        color: #fff;
+        font-size: 12px; /* Smaller text size */
+    }
+
+    .whatsapp-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #25d366;
+        padding: 8px; /* Reduced padding */
+        border-radius: 50%;
+    }
+
+    .whatsapp-button img {
+        width: 25px; /* Smaller icon size */
+        height: 25px;
+    }
+
+    .whatsapp-button:hover {
+        opacity: 0.7;
+    }
+
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(15,65,152,255);
+        color: white;
+        border: solid;
+        border-color: gold;
+        padding: 12px; /* Reduced padding */
+        border-radius: 100%;
+        display: none;
+        font-size: 20px; /* Smaller text size */
+        font-weight: bold;
+        z-index: 2;
+    }
+
+    .scroll-to-top:hover {
+        opacity: 0.7;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .wrapper .icon {
+        position: relative;
+        background: white;
+        color: black;
+        border-radius: 50%;
+        padding: 10px; /* Smaller padding */
+        margin: 5px;
+        width: 40px; /* Smaller wrapper size */
+        height: 40px;
+        font-size: 14px; /* Smaller font size */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: solid;
+        border-color: #ff7f00;
+    }
+
+    .wrapper .icon a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .wrapper .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 12px; /* Smaller tooltip text size */
+        background: #1e1d1d;
+        color: white;
+        padding: 5px 8px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .wrapper .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #1e1d1d;
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s ease;
+    }
+
+    .wrapper .icon:hover .tooltip {
+        top: -35px; /* Adjusted position */
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .wrapper .icon:hover {
+        background: #1e1d1d;
+        color: white;
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        .footer-about, .footer-support, .footer-contact {
+            flex: 100%; /* Full-width on small screens */
+            padding: 10px; /* Adjusted padding */
+        }
+
+        .wrapper .icon {
+            width: 35px; /* Smaller wrapper size for mobile */
+            height: 35px;
+            font-size: 12px; /* Smaller font size */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-about, .footer-support, .footer-contact {
+            padding: 8px; /* Further reduced padding */
+        }
+
+        .footer-bottom {
+            font-size: 10px; /* Smaller text for footer bottom */
+        }
+
+        .wrapper .icon {
+            width: 30px; /* Even smaller wrapper size for very small screens */
+            height: 30px;
+            font-size: 10px; /* Smaller font size */
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header id = "navbar">
+        <div class="header-main">
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <img src="assets/images/TeamAmazonlogo.jpg" alt="Logo">
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" data-text="Home" class="active">Home</a></li>
+                    <li><a href="#" data-text="Services">Services</a></li>
+                    <li><a href="#" data-text="Portfolio">Portfolio</a></li>
+                    <li><a href="#" data-text="Testimonials">Testimonials</a></li>
+                    <li><a href="#" data-text="About Us">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="schedule-call">
+                <i class="fa fa-plus"></i><a href="#" data-text="Schedule a Free Call"><span>Schedule a Free Call</span></a>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdown-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <header id="hero">
+        <div class="hero-slider">
+            <div class="slide" style="background-image: url('https://s.abcnews.com/images/Business/amazon-01-as-gty-190920_hpMain_16x9_992.jpg');">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1><span class="highlight">Boost </span> Your <span class="highlight">Amazon Sales</span> with Amazon PPC Optimization</h1>
+                        <p>Discover how our experts optimize Amazon PPC and get the growth you need.</p>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-primary">Schedule Your Free Call</a>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-secondary">Get Consultation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide active" style="background-image: url('https://d2gg9evh47fn9z.cloudfront.net/1600px_COLOURBOX27537828.jpg');">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1>Power Your <span class="highlight">Amazon Success</span> with Expert PPC Strategies</h1>
+                        <p>Drive sales, optimize costs, and grow your brand with tailored Amazon PPC management.</p>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-primary">Schedule Your Free Call</a>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-secondary">Get Consultation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://www.zohowebstatic.com/sites/default/files/analytics/marketing-roi-dashboard.png');">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1>Maximize <span class="highlight">ROI</span> with Data-Driven PPC Campaigns</h1>
+                        <p>Our expert team focuses on data and analytics to deliver high-performing ad campaigns.</p>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-primary">Schedule Your Free Call</a>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-secondary">Get Consultation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://cdn.greatdeals.com.sg/wp-content/uploads/2019/10/08135605/amazon-sg-website-now-open.jpg');">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1>Transform Your <span class="highlight">Brand Visibility</span> on Amazon</h1>
+                        <p>We use cutting-edge strategies to place your brand at the forefront of Amazon search results.</p>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-primary">Schedule Your Free Call</a>
+                        <a href="https://calendly.com/your-scheduling-link" class="btn btn-secondary">Get Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <span class="prev-slide">&lt;</span>
+            <span class="next-slide">&gt;</span>
+        </div>
+        <div class="pagination-dots">
+            <!-- Pagination dots added dynamically with JS -->
+        </div>
+    </header>
+
+    <div class="section1">
+    <div class="hero-section">
+        <div class="background">
+            <div class="bg-text">TeamAmazon</div>
+        </div>
+        <div class="content">
+            <div class="text-container">
+                <h1>Boost Your <span class="highlight">Amazon Revenue</span></h1>
+                <p>With our <span class="highlight">Exclusive PPC Mechanism</span>, achieve a <span class="highlight">15% growth</span> in 3 months, or we refund <span class="highlight">$1,000</span>.</p>
+                <div class="buttons">
+                    <button class="cta-button">Schedule a Free Call <span class="arrow">→</span></button>
+                    <button class="cta-button">Get Consultancy <span class="arrow">→</span></button>
+                </div>
+            </div>
+            <div class="image-container">
+                <div class="floating-images">
+                    <img src="assets/whitelogo.jpg" alt="PPC Image 1" width="300" height="200">
+                    <img src="https://images.squarespace-cdn.com/content/v1/61a407d56ae6595e3f4ab6fa/1662845104545-MRDHMW9KWJ2Q39I91LMV/Amazon+PPC.png" width="300" height="200">
+                    <img src="https://imageio.forbes.com/specials-images/imageserve/633a774a842d06ecd68286ff/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds" alt="Amazon PPC" width="300" height="200">
+                    <img src="https://tjcjobs.com/wp-content/uploads/2019/04/Job-Connection-Office-Worker-1024x576.jpeg" width="300" height="200">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio-section">
+  <div class="counter-box animated">
+    <span class="number" data-target="7200000">0</span>
+    <span class="label">Sales Per Annum</span>
+  </div>
+  <div class="counter-box animated">
+    <span class="number" data-target="60">0</span>
+    <span class="label">Clients</span>
+  </div>
+  <div class="counter-box animated">
+    <span class="number" data-target="70">0</span>
+    <span class="label">Successful Launches</span>
+  </div>
+  <div class="counter-box animated">
+    <span class="number" data-target="15">0</span>
+    <span class="label">Growth</span>
+  </div>
+</div>
+<section class="brand-section">
+        <h2 class="section-heading">Brands that <span class="highlight">trust</span> <span class="highlight">TeamAmazon</span></h2>
+        <div class="logo-container">
+            <div class="logos">
+                <img src="https://via.placeholder.com/150x50?text=Brand+1" alt="Brand 1">
+                <img src="https://via.placeholder.com/150x50?text=Brand+2" alt="Brand 2">
+                <img src="https://via.placeholder.com/150x50?text=Brand+3" alt="Brand 3">
+                <img src="https://via.placeholder.com/150x50?text=Brand+4" alt="Brand 4">
+                <img src="https://via.placeholder.com/150x50?text=Brand+5" alt="Brand 5">
+                <img src="https://via.placeholder.com/150x50?text=Brand+6" alt="Brand 6">
+                <!-- Duplicate logos for continuous effect -->
+                <img src="https://via.placeholder.com/150x50?text=Brand+1" alt="Brand 1">
+                <img src="https://via.placeholder.com/150x50?text=Brand+2" alt="Brand 2">
+                <img src="https://via.placeholder.com/150x50?text=Brand+3" alt="Brand 3">
+                <img src="https://via.placeholder.com/150x50?text=Brand+4" alt="Brand 4">
+                <img src="https://via.placeholder.com/150x50?text=Brand+5" alt="Brand 5">
+                <img src="https://via.placeholder.com/150x50?text=Brand+6" alt="Brand 6">
+            </div>
+        </div>
+    </section>
+    <div class="service-section">
+        <h1 class="heading">Our <span>Services<br><br></span></h1>
+        <div class="cube-container">
+            <div class="cube">
+                <div class="face front">Our Services</div>
+                <div class="face back">Our Services</div>
+                <div class="face left">Our Services</div>
+                <div class="face right">Our Services</div>
+                <div class="face top">Our Services</div>
+                <div class="face bottom">Our Services</div>
+            </div>
+        </div>
+        <div class="service-cards">
+            <div class="service-card" data-service="Amazon PPC">
+                <i class="fas fa-chart-line"></i>
+                <h3>Amazon PPC</h3>
+                <p>Maximize your ROI with <span class="highlight">expert keyword research</span>.</p>
+            </div>
+            <div class="service-card" data-service="Amazon Advertising">
+                <i class="fas fa-bullseye"></i>
+                <h3>Amazon Advertising</h3>
+                <p>Boost visibility with <span class="highlight">targeted advertising</span> strategies.</p>
+            </div>
+            <div class="service-card" data-service="Amazon Management">
+                <i class="fas fa-ad"></i>
+                <h3>Amazon Management</h3>
+                <p>Efficient <span class="highlight">Amazon store management</span> to drive success.</p>
+            </div>
+            <div class="service-card" data-service="Marketing Campaign Management">
+                <i class="fas fa-cogs"></i>
+                <h3>Marketing Campaign Management</h3>
+                <p>Optimize <span class="highlight">marketing campaigns</span> for maximum impact.</p>
+            </div>
+            <div class="service-card" data-service="Marketing Consulting">
+                <i class="fas fa-comments"></i>
+                <h3>Marketing Consulting</h3>
+                <p>Get expert advice on <span class="highlight">marketing strategies</span>.</p>
+            </div>
+            <div class="service-card" data-service="Digital Marketing">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Digital Marketing</h3>
+                <p>Enhance online presence with <span class="highlight">digital marketing</span> techniques.</p>
+            </div>
+            <div class="service-card" data-service="Marketing Strategy">
+                <i class="fas fa-strategy"></i>
+                <h3>Marketing Strategy</h3>
+                <p>Develop effective <span class="highlight">marketing strategies</span> for growth.</p>
+            </div>
+            <div class="service-card" data-service="Performance Marketing">
+                <i class="fas fa-rocket"></i>
+                <h3>Performance Marketing</h3>
+                <p>Drive performance with <span class="highlight">data-driven marketing</span> methods.</p>
+            </div>
+            <div class="service-card" data-service="Search Engine Marketing (SEM)">
+                <i class="fas fa-search"></i>
+                <h3>Search Engine Marketing (SEM)</h3>
+                <p>Increase visibility through <span class="highlight">search engine marketing</span>.</p>
+            </div>
+        </div>
+    </div>
+    <section class="brochure-section">
+         <h1 class="heading">Take the First Step Towards Your <span>Million Dollar Business<br><br></span></h1>
+    <br>
+
+    <div class="brochure-box">
+      <img src="https://coinad.network/themes/blazing-orange/images/cpc-img.jpg" alt="PPC">
+      <h3>PPC Adverstising</h3>
+      <p>Accelerate your Growth and boost your visibility with PPC Advertising.</p>
+      <a href="#">Read More...</a>
+    </div>
+
+    <a href="#" class="schedule-call-button">Schedule a Free Call</a>
+  </section>
+
+  <!-- Case Studies Section -->
+    <section id="case-studies" class="section">
+        <div class="container">
+            <h2 class="section-title">Case Studies</h2>
+            <div class="case-studies">
+                <div class="case-study">
+                    <img src="https://th.bing.com/th/id/R.5c7fe3497bec3e36e4ffd1c34e088017?rik=goP0Eok%2brvgmSw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fincrease-sales-png-graph-chart-sales-increase-business-diagram-960.png&ehk=N2HeEybvNgXBHz8IFIARkWLMJzCRxVFrsLmSNtJTCzw%3d&risl=&pid=ImgRaw&r=0">
+                    <h3>Driving <span class="highlight">150% Sales Growth</span> for XYZ Brand</h3>
+                    <p>Our strategic PPC campaigns helped XYZ Brand achieve significant growth within six months, increasing sales by <span class="highlight">150%</span>.</p>
+                    <button class="explore-button">Explore</button>
+                </div>
+                <div class="case-study">
+                    <img src="https://static.vecteezy.com/system/resources/previews/023/880/447/original/cost-reduction-illustration-with-decrease-price-minimising-or-falling-rate-of-profit-in-business-flat-cartoon-hand-drawn-templates-vector.jpg">
+                    <h3>Reducing Costs by <span class="highlight">30%</span> for ABC Co.</h3>
+                    <p>Through precise targeting and bid management, we reduced ad spend for ABC Co. by <span class="highlight">30%</span>, while maintaining conversion rates.</p>
+                    <button class="explore-button">Explore</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title">Why clients love <span class="highlight">TeamAmazon</span></h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial">
+                    <img src="https://www.seekpng.com/png/detail/60-604032_face-businessman-png-dummy-images-for-testimonials.png" alt="Client Photo" style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover; margin-bottom: 1rem;">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The team’s expertise in Amazon PPC <span class="highlight">transformed our business</span>. Our sales have never been better!"</p>
+                    <h4>John Doe, ABC Co.</h4>
+                </div>
+                <div class="testimonial">
+                    <img src="https://i0.wp.com/www.torontophotographerz.com/wp-content/uploads/2017/06/Linkedin-portraits-2.jpg?fit=800%2C1200&ssl=1" alt="Client Photo" style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover; margin-bottom: 1rem;">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"We saw immediate results after working with this team. Our <span class="highlight">ad spend is optimized</span>, and our sales are up!"</p>
+                    <h4>Jane Smith, XYZ Brand</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<div class="faq-section">
+    <h2><span>FAQs</span> About Amazon PPC</h2>
+
+    <div class="faq">
+        <div class="question">
+            What is Amazon PPC?
+            <span class="plus-icon">+</span>
+        </div>
+        <div class="answer">
+            Amazon PPC (Pay-Per-Click) is a form of paid advertising on Amazon where advertisers pay a fee each time their ad is clicked. It's a powerful tool to drive traffic to product listings and increase sales.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            How does Amazon PPC work?
+            <span class="plus-icon">+</span>
+        </div>
+        <div class="answer">
+            Amazon PPC allows sellers to bid on keywords related to their products. When a shopper searches for these keywords, the highest bidders' ads appear in the search results or product pages. Advertisers only pay when someone clicks on their ad.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            What are the types of Amazon PPC ads?
+            <span class="plus-icon">+</span>
+        </div>
+        <div class="answer">
+            Amazon PPC offers three types of ads: Sponsored Products, Sponsored Brands, and Sponsored Display. Sponsored Products promote individual listings, Sponsored Brands highlight your brand and a selection of products, and Sponsored Display targets shoppers based on their behavior.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            How can I optimize my Amazon PPC campaigns?
+            <span class="plus-icon">+</span>
+        </div>
+        <div class="answer">
+            To optimize Amazon PPC campaigns, focus on keyword research, bid management, and monitoring performance. Regularly review your campaigns, adjust bids for underperforming keywords, and test new keywords to improve results.
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="question">
+            What is ACoS in Amazon PPC?
+            <span class="plus-icon">+</span>
+        </div>
+        <div class="answer">
+            ACoS (Advertising Cost of Sales) is a key metric in Amazon PPC that shows the ratio of ad spend to sales revenue generated. A lower ACoS indicates a more profitable campaign. To calculate ACoS, divide ad spend by revenue.
+        </div>
+    </div>
+
+</div>
+
+<div id="content5">
+            <div id="page5" class="page">
+                <h1>24/7 Support</h1>
+                <p>We are here to help you anytime. Please fill out the form below, and we will get back to you as soon as possible.</p>
+        
+                <form id="contact-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+        
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+        
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+        
+                    <button type="submit" id="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+        <footer>
+    <div class="footer-content">
+        <div class="footer-about">
+            <h3>About Us</h3>
+            <p>I help 6 to 8 figure brands 2 to 10x Amazon sales while improving PPC Performance. My management service takes you from poor performing campaigns to profitable Growth.</p>
+        </div>
+        <div class="footer-support">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#">Amazon PPC</a></li>
+                <li><a href="#">Amazon Management</a></li>
+                <li><a href="#">Digital Marketing</a></li>
+                <li><a href="#">Influencer Marketing</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h3>Get in Touch</h3><br><br>
+             <span><img src="assets/phone.svg" width='20' height='20'></a> +92 336 1061952 </span><br>
+            <span><img src="assets/mail.svg" width='20' height='20'></a> ali@teamamazon.co</span>
+              <div class="wrapper">
+                <div class="icon">
+            <div class="tooltip">Whatsapp</div>
+            <span><a href="#"><i class="fa fa-whatsapp"></i></a></span>
+        </div>
+        <div class="icon">
+            <div class="tooltip">Facebook</div>
+            <span><a href="#"><i class="fa fa-facebook"></i></a></span>
+        </div>
+        <div class="icon">
+            <div class="tooltip">Instagram</div>
+            <span><a href="#"><i class="fa fa-instagram"></i></a></span>
+        </div>
+        <div class="icon">
+            <div class="tooltip">Linkedin</div>
+            <span><a href="https://www.linkedin.com/in/ali96?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app 
+"><i class="fa fa-linkedin"></i></a></span>
+        </div>
+        <div class="icon">
+            <div class="tooltip">YouTube</div>
+            <span><a href="#"><i class="fa fa-youtube-play"></i></a></span>
+        </div>
+    </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Team Amazon. All rights reserved.</p>
+    </div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/yourphonenumber" class="whatsapp-button">
+    <img src="assets/images/whatsapp.png" alt="WhatsApp">
+</a>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top">&#8593;</button>
+
+    <script>
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        // Toggle hamburger menu and dropdown
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            dropdownMenu.classList.toggle('show-dropdown');
+        });
+
+        // Close dropdown when clicking outside or on a menu item
+        document.addEventListener('click', (event) => {
+            if (!hamburgerMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                hamburgerMenu.classList.remove('active');
+                dropdownMenu.classList.remove('show-dropdown');
+            }
+        });
+
+        // Update menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                hamburgerMenu.classList.remove('active');
+                dropdownMenu.classList.remove('show-dropdown');
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const slides = document.querySelectorAll('.slide');
+            const slider = document.querySelector('.hero-slider');
+            const paginationDots = document.querySelector('.pagination-dots');
+            let currentSlide = 0;
+            const prevSlide = document.querySelector('.prev-slide');
+            const nextSlide = document.querySelector('.next-slide');
+
+            function showSlide(index) {
+                slider.style.transform = `translateX(-${index * 100}%)`;
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                updatePagination(index);
+            }
+
+            function updatePagination(index) {
+                const dots = document.querySelectorAll('.pagination-dots span');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            prevSlide.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            });
+
+            nextSlide.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            });
+
+            setInterval(() => {
+                nextSlide.click();
+            }, 5000);
+
+            showSlide(currentSlide);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide.click();
+                }
+            });
+
+            // Initialize pagination dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    showSlide(currentSlide);
+                });
+                paginationDots.appendChild(dot);
+            });
+
+            // Set the initial pagination
+            updatePagination(currentSlide);
+        });
+    </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+      setTimeout(() => {
+        entry.target.classList.toggle('show', entry.isIntersecting);
+
+        // Update counter if it exists within the target
+        const counter = entry.target.querySelector('.number');
+        if (counter) {
+          updateCount(counter);
+        }
+      }, index * 200); // Delay each animation by 200ms
+    });
+  }, { threshold: 0.5 });
+
+  // Observe hero slides
+  const heroslides = document.querySelectorAll('.slide');
+  heroslides.forEach(slide => observer.observe(slide));
+
+  const cube = document.querySelectorAll('.cube');
+  cube.forEach(cubes => observer.observe(cubes));
+
+  // Observe buttons
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(bt => observer.observe(bt));
+
+  // Observe floating images
+  const floatImg = document.querySelectorAll('.floating-images');
+  floatImg.forEach(img => observer.observe(img));
+
+  // Observe counter boxes
+  const counterBoxes = document.querySelectorAll('.counter-box.animated');
+  counterBoxes.forEach(box => observer.observe(box));
+
+  document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
+            });
+    document.querySelectorAll('.case-study, .testimonial').forEach(card => {
+                observer.observe(card);
+            });
+   document.querySelectorAll('.brochure-box').forEach(brochure => {
+                observer.observe(brochure);
+            });
+     document.querySelectorAll('.faq').forEach(faq => {
+        observer.observe(faq);
+    });
+  // Scroll to top button functionality
+  const scrollToTopBtn = document.querySelector('.scroll-to-top');
+  if (scrollToTopBtn) {
+    window.addEventListener('scroll', () => {
+      scrollToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Counter functionality
+  const updateCount = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText.replace(/[^0-9]/g, '');
+    //const increment = Math.ceil(target / 100); // Adjust the speed of the counter
+    const increment = 1;
+    const formattedTarget = formatNumber(target);
+
+    if (count < 105 && count < target) {
+      counter.innerText = formatNumber(Math.ceil(count + increment)); // Incrementing number
+      setTimeout(() => updateCount(counter), 30); // Slow down the update speed
+    } else if (count < target) {
+      counter.innerText = formattedTarget; // Format the final number
+      counter.classList.add('formatted');
+    } else {
+      counter.innerText = formattedTarget;
+      if (counter.parentElement.querySelector('.label').textContent.includes('Clients')) {
+        counter.innerText += '+';
+      } else if (counter.parentElement.querySelector('.label').textContent.includes('Growth')) {
+        counter.innerText += 'X';
+      }
+    }
+  };
+
+
+  const formatNumber = (num) => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K';
+    } else {
+      return num;
+    }
+  };
+});
+</script>
+
+
+<script>
+        // This script enhances the parallax effect for the background text.
+document.addEventListener('scroll', function() {
+    const bgText = document.querySelector('.bg-text');
+    const scrollPosition = window.pageYOffset;
+    bgText.style.transform = `translateX(${scrollPosition * 0.2}px)`;
+});
+    </script>
+
+    <script>
+    document.querySelectorAll('.faq').forEach(faq => {
+        faq.addEventListener('click', () => {
+            faq.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>
