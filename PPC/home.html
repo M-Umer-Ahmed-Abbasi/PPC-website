@@ -18,7 +18,16 @@
             padding: 0;
             box-sizing: border-box;
             overflow-x: hidden;
+            max-width:100%;
+            width:100%;
+
         }
+
+        img, .container, .section {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+}
 
         .header-main {
             display: flex;
@@ -38,6 +47,7 @@
 
              border-bottom: solid;
             border-color: #ff7f00;
+            overflow:hidden;
         }
 
         .logo img {
@@ -332,6 +342,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .hero-slider {
@@ -620,7 +631,10 @@ p {
 
 .buttons {
     display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap in smaller screens */
     gap: 15px;
+    justify-content: center; /* Center buttons horizontally */
+    margin: 0 auto; /* Center container if it has a fixed width */
 }
 
 .cta-button {
@@ -633,9 +647,11 @@ p {
     display: inline-flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Changed from 'auto' to 'hidden' to avoid scrolling */
+    border-radius: 5px; /* Rounded corners for a button shape */
     transition: background-color 0.3s ease, transform 0.3s ease;
-    width:auto;
+    width: auto;
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .cta-button .arrow {
@@ -650,6 +666,21 @@ p {
 
 .cta-button:hover .arrow {
     margin-left: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cta-button {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+        font-size: 0.9rem; /* Slightly smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 8px 16px; /* Further adjust padding */
+        font-size: 0.8rem; /* Smaller font size */
+    }
 }
 
 .image-container {
@@ -699,66 +730,66 @@ p {
 </style>
 <style>
     .portfolio-section {
-  background-color: rgb(3,3,55); /* Blue background */
-  color: white;
-  padding: 20px 20px;
-  text-align: center;
-  justify-content:center ;
+    background-color: rgb(3, 3, 55); /* Blue background */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex; /* Use flexbox for centering */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center; /* Center items horizontally */
+    gap: 30px; /* Space between items */
 }
 
 .counter-box {
-  display: inline-block;
-  background-color: white;
-  color: black;
-  width: 200px; /* Adjusted width for equal size */
-  height: 200px; /* Adjusted height for equal size */
-  margin: 30px;
-  padding: 20px;
-  border-radius: 10px;
-  border: solid;
-  border-color: orange;
-  font-size: 24px;
-  font-weight: bold;
-  position: relative;
-  box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5); /* Light blue glow */
-  
-  opacity: 0;
-  /*transform: translateY(300px);*/
-  transform: scale3d(0.1, 0.1, 0.1);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+    background-color: white;
+    color: black;
+    width: 200px; /* Adjusted width for equal size */
+    height: 200px; /* Adjusted height for equal size */
+    padding: 20px;
+    border-radius: 10px;
+    border: solid;
+    border-color: orange;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5); /* Light blue glow */
+    
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1);
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .counter-box.show {
-  /*transform: translateY(0);*/
-  transform: scale3d(1, 1, 1);
-  opacity: 1;
-  transition: transform 1.5s ease;
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+    transition: transform 1.5s ease;
 }
 
 .counter-box .number {
-  padding-top: 30px;
-  display: block;
-  font-size: 70px;
-  color: rgb(3,3,55);
-  transition: color 0.3s ease;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), /* Inner white glow */
-        0 0 20px rgba(0, 123, 255, 0.2); /* Outer blue glow */
-  outline: 2px solid rgba(255, 255, 255, 0.1); /* Grey outline */
+    padding-top: 30px;
+    display: block;
+    font-size: 70px;
+    color: rgb(3, 3, 55);
+    transition: color 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), /* Inner white glow */
+                0 0 20px rgba(0, 123, 255, 0.2); /* Outer blue glow */
+    outline: 2px solid rgba(255, 255, 255, 0.1); /* Grey outline */
 }
 
 .counter-box:hover {
-  transform: scale(1.25); /* Zoom on hover */
-  transition: transform 0.5s ease;
+    transform: scale(1.25); /* Zoom on hover */
+    transition: transform 0.5s ease;
 }
 
 .counter-box:hover .number {
-  color: goldenrod;
+    color: goldenrod;
 }
 
 .counter-box .label {
-  margin-top: 10px;
-  font-size: 18px;
+    margin-top: 10px;
+    font-size: 18px;
 }
+
 </style>
 <style>
     .brand-section {
@@ -1136,6 +1167,7 @@ p {
       flex-direction: column;
       align-items: center;
       padding: 50px;
+      overflow:hidden;
     }
 
     .heading {
@@ -1168,7 +1200,7 @@ p {
           }
 
     .brochure-box img {
-      width: 95%;
+      width: auto;
       height: 100%;
       object-fit: cover;
       padding: 10px;
@@ -1602,7 +1634,7 @@ p {
 
 <body>
     <!-- Header -->
-    <header id = "navbar">
+   <header id = "navbar">
         <div class="header-main">
             <div class="hamburger-menu" id="hamburger-menu">
                 <span></span>
